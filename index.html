@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Almar Playbox</title>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME ICON -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+html{scroll-behavior:smooth}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#0e0e0e,#2b1f17,#ffffff);
+  color:#1b1b1b;
+}
+
+/* ===== NAVBAR ===== */
+nav{
+  position:sticky;
+  top:0;
+  z-index:999;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  padding:15px;
+  background:rgba(14,14,14,.75);
+  backdrop-filter:blur(12px);
+}
+nav button{
+  background:rgba(255,255,255,.15);
+  border:1px solid #c7a17a;
+  padding:10px 24px;
+  border-radius:40px;
+  cursor:pointer;
+  font-weight:600;
+  color:#fff;
+  transition:.4s;
+}
+nav button:hover{
+  background:#c7a17a;
+  color:#000;
+  transform:translateY(-2px);
+}
+
+/* ===== HEADER ===== */
+header{
+  text-align:center;
+  padding:80px 20px 60px;
+}
+header h1{
+  font-size:42px;
+  letter-spacing:5px;
+  color:#c7a17a;
+}
+header p{color:#eee;margin-top:8px}
+
+/* ===== SECTION ===== */
+section{padding:80px 20px}
+.title{
+  text-align:center;
+  font-size:32px;
+  color:#3a2c23;
+  margin-bottom:50px;
+}
+
+/* ===== CARD ===== */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+  max-width:1100px;
+  margin:auto;
+}
+.card{
+  background:rgba(255,255,255,.95);
+  border-radius:28px;
+  padding:30px;
+  box-shadow:0 20px 45px rgba(0,0,0,.3);
+  transition:.4s;
+  text-align:center;
+}
+.card:hover{
+  transform:translateY(-8px);
+}
+.card h3{color:#3a2c23;margin-bottom:6px}
+.card p{font-size:14px;color:#555}
+.card i{
+  color:#c7a17a;
+  margin-right:8px;
+}
+.card a{
+  text-decoration:none;
+  font-weight:600;
+  color:#3a2c23;
+}
+.card a:hover{color:#c7a17a}
+.price{
+  margin-top:12px;
+  font-size:22px;
+  font-weight:700;
+}
+
+/* ===== FORM ===== */
+form{
+  max-width:600px;
+  margin:auto;
+  background:#fff;
+  padding:40px;
+  border-radius:30px;
+  box-shadow:0 30px 60px rgba(0,0,0,.35);
+}
+input,select{
+  width:100%;
+  padding:14px 16px;
+  margin-bottom:18px;
+  border-radius:14px;
+  border:1px solid #ccc;
+}
+input:focus,select:focus{
+  outline:none;
+  border-color:#c7a17a;
+}
+#harga{
+  font-size:22px;
+  font-weight:700;
+  color:#3a2c23;
+  margin-bottom:18px;
+}
+button.submit{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:40px;
+  background:linear-gradient(135deg,#3a2c23,#1b1b1b);
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  transition:.4s;
+}
+button.submit:hover{
+  transform:translateY(-3px);
+}
+
+/* ===== POPUP ===== */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+.popup .box{
+  background:#fff;
+  padding:40px;
+  border-radius:28px;
+  text-align:center;
+  animation:pop .4s ease;
+}
+@keyframes pop{
+  from{transform:scale(.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+/* ===== FLOATING WA ===== */
+.wa-float{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  width:60px;
+  height:60px;
+  background:#25D366;
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:30px;
+  box-shadow:0 15px 30px rgba(0,0,0,.4);
+  z-index:2000;
+  animation:float 2s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+  header h1{font-size:34px}
+  section{padding:60px 16px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>ALMAR PLAYBOX</h1>
+<p>• Experience Next-Level Gaming •</p>
+</header>
+
+<nav>
+<button onclick="scrollToSection('reservasi')">Reservasi</button>
+<button onclick="scrollToSection('pricelist')">Pricelist</button>
+<button onclick="scrollToSection('kontak')">Kontak</button>
+<button onclick="scrollToSection('tutorial')">Tutorial</button>
+</nav>
+
+<!-- RESERVASI -->
+<section id="reservasi">
+<h2 class="title">Reservasi Playbox</h2>
+
+<form onsubmit="submitBooking();return false;">
+<input type="date" id="tanggal" required>
+<input type="text" id="nama" placeholder="Nama Lengkap" required>
+<input type="number" id="wa" placeholder="Nomor WhatsApp" required>
+
+<select id="paket" onchange="harga()" required>
+<option value="">Pilih Paket</option>
+<option value="30000">2 Jam</option>
+<option value="40000">3 Jam</option>
+<option value="60000">5 Jam</option>
+<option value="50000">Paket Nongki Siang</option>
+<option value="65000">Paket Hangout</option>
+<option value="50000">Paket Malam</option>
+<option value="150000">Paket Weekday</option>
+<option value="170000">Paket Weekend</option>
+</select>
+
+<input type="text" id="jam" placeholder="Dari Jam - Ke Jam">
+<div id="harga">Harga: -</div>
+
+<button class="submit">Konfirmasi Reservasi</button>
+</form>
+</section>
+
+<!-- PRICELIST -->
+<section id="pricelist">
+<h2 class="title">Pricelist</h2>
+<div class="cards">
+  <div class="card"><h3>2 Jam</h3><p>PS4 Regular</p><div class="price">Rp 30.000</div></div>
+  <div class="card"><h3>3 Jam</h3><p>PS4 Regular</p><div class="price">Rp 40.000</div></div>
+  <div class="card"><h3>5 Jam</h3><p>PS4 Regular</p><div class="price">Rp 60.000</div></div>
+  <div class="card"><h3>Paket Nongki Siang</h3><p>13:00 – 17:00</p><div class="price">Rp 50.000</div></div>
+  <div class="card"><h3>Paket Hangout</h3><p>17:00 – 23:30</p><div class="price">Rp 65.000</div></div>
+  <div class="card"><h3>Paket Malam</h3><p>01:00 – 08:00</p><div class="price">Rp 50.000</div></div>
+  <div class="card"><h3>Paket Weekday</h3><p>24 Jam</p><div class="price">Rp 150.000</div></div>
+  <div class="card"><h3>Paket Weekend</h3><p>24 Jam</p><div class="price">Rp 170.000</div></div>
+</div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak">
+<h2 class="title">Kontak & Sosial Media</h2>
+<div class="cards">
+  <div class="card">
+    <h3><i class="fab fa-instagram"></i> Instagram</h3>
+    <p>@almarplaybox</p>
+    <a href="https://instagram.com/almarplaybox" target="_blank">Buka Instagram</a>
+  </div>
+  <div class="card">
+    <h3><i class="fab fa-tiktok"></i> TikTok</h3>
+    <p>@AlmarPlaybox</p>
+    <a href="https://www.tiktok.com/@AlmarPlaybox" target="_blank">Buka TikTok</a>
+  </div>
+  <div class="card">
+    <h3><i class="fab fa-whatsapp"></i> Admin 1</h3>
+    <p>082165076228</p>
+    <a href="https://wa.me/6282165076228" target="_blank">Chat WhatsApp</a>
+  </div>
+  <div class="card">
+    <h3><i class="fab fa-whatsapp"></i> Admin 2</h3>
+    <p>082269198306</p>
+    <a href="https://wa.me/6282269198306" target="_blank">Chat WhatsApp</a>
+  </div>
+  <div class="card">
+    <h3><i class="fab fa-whatsapp"></i> Admin 3</h3>
+    <p>082285013136</p>
+    <a href="https://wa.me/6282285013136" target="_blank">Chat WhatsApp</a>
+  </div>
+</div>
+</section>
+<!-- TUTORIAL -->
+<section id="tutorial">
+  <h2 class="title">Tutorial Penggunaan</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3><i class="fa-solid fa-circle-play"></i> Tutorial Menghidupkan Playbox</h3>
+      <p>Wajib Mengikuti Aturan Dan Urutan Tahapan Sesuai Tutorial</p>
+      <a href="https://vt.tiktok.com/ZSPE9B2BL/" target="_blank">
+        Tonton Video
+      </a>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa-solid fa-circle-play"></i> Tutorial Mematikan Playbox</h3>
+      <p>Wajib Mengikuti Aturan Dan Urutan Tahapan Sesuai Tutorial</p>
+      <a href="https://vt.tiktok.com/ZSPE9ncfR/" target="_blank">
+        Tonton Video
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- POPUP -->
+<div class="popup" id="success">
+<div class="box">
+<h3>Reservasi Berhasil 🎮</h3>
+<p>Lanjutkan ke WhatsApp Admin</p><br>
+<button onclick="kirimWA()">Chat Admin</button>
+</div>
+</div>
+
+<script>
+tanggal.value=new Date().toISOString().split('T')[0];
+
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+function rupiah(n){return 'Rp '+Number(n).toLocaleString('id-ID')}
+function harga(){
+ const p=document.getElementById('paket');
+ document.getElementById('harga').innerText=
+ p.value?`Harga: ${rupiah(p.value)}`:'Harga: -';
+}
+function submitBooking(){
+  const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSemrcSPNGvXNruxz3i-rbRblRRxX0vUfRb9jsI8nTcU390twg/formResponse";
+
+  const data = new FormData();
+  data.append("entry.1702539920", nama.value);
+  data.append("entry.2082454411", wa.value);
+  data.append("entry.126088093", tanggal.value);
+  data.append("entry.980610496", paket.options[paket.selectedIndex].text);
+  data.append("entry.1059989995", jam.value);
+  data.append("entry.359731098", rupiah(paket.value));
+
+  fetch(formURL, {
+    method: "POST",
+    mode: "no-cors",
+    body: data
+  });
+
+  // Popup sukses
+  document.getElementById('success').style.display='flex';
+}
+function kirimWA(){
+ const p=document.getElementById('paket');
+ const msg=`Halo Admin Almar Playbox%0A
+Nama: ${nama.value}%0A
+WA: ${wa.value}%0A
+Tanggal: ${tanggal.value}%0A
+Paket: ${p.options[p.selectedIndex].text}%0A
+Jam: ${jam.value}%0A
+Harga: ${rupiah(p.value)}`;
+ window.open(`https://wa.me/6282269198306?text=${msg}`);
+}
+</script>
+
+</body>
+</html>
